@@ -16,10 +16,10 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
     p = Peripheral(SWITCHBOT, "random")
-	hand_service = p.getServiceByUUID("cba20d00-224d-11e6-9fb8-0002a5d5c51b")
-	hand = hand_service.getCharacteristics("cba20002-224d-11e6-9fb8-0002a5d5c51b")[0]
-	hand.write(binascii.a2b_hex("570100"))
-	p.disconnect()
+    hand_service = p.getServiceByUUID("cba20d00-224d-11e6-9fb8-0002a5d5c51b")
+    hand = hand_service.getCharacteristics("cba20002-224d-11e6-9fb8-0002a5d5c51b")[0]
+    hand.write(binascii.a2b_hex("570100"))
+    p.disconnect()
 
 client = mqtt.Client()
 client.username_pw_set("token:%s"%TOKEN)
